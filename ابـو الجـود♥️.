@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <iomanip>
+
+using namespace std;
+
+// هيكل لتخزين معلومات كل خدمة
+struct Service {
+    int id;
+    string name;
+    string description;
+};
+
+// دالة لطباعة فاصل جمالي
+void printLine(char ch = '=', int length = 55) {
+    cout << string(length, ch) << endl;
+}
+
+int main() {
+    // ضبط ترميز الشاشة لدعم النصوص (إذا كان النظام يدعم UTF-8)
+    #ifdef _WIN32
+        system("chcp 65001 > nul");
+    #endif
+
+    // رأس المنصة
+    printLine('=');
+    cout << "               SK DIGITAL PLATFORM               " << endl;
+    cout << "          منصة الخدمات الإلكترونية العراقية          " << endl;
+    printLine('=');
+    cout << "الوصف: نقدم حلولاً رقمية متكاملة، تصميم مواقع،" << endl;
+    cout << "      وأنظمة إدارية بخبرة واحترافية عالية." << endl;
+    printLine('-');
+
+    // قائمة الخدمات المقترحة
+    vector<Service> services = {
+        {1, "تصميم مواقع إلكترونية", "مواقع هبوط، متاجر، وواجهات عصرية"},
+        {2, "إنشاء منيو QR للمطاعم", "منيو إلكتروني تفاعلي متطور"},
+        {3, "تصميم هويات وشعارات", "هوية بصرية كاملة تناسب مشروعك"},
+        {4, "برمجة أنظمة إدارية", "لوحات تحكم وقواعد بيانات مخصصة"},
+        {5, "خدمات الأمن السيبراني", "حماية وتأمين الحسابات والأنظمة"}
+    };
+
+    // عرض الخدمات
+    cout << "\n[ قائمة الخدمات المتاحة ]:\n" << endl;
+    for (const auto& service : services) {
+        cout << " " << service.id << ". " << service.name << endl;
+        cout << "    └── " << service.description << endl;
+        cout << endl;
+    }
+
